@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { Button } from '../../shared/components/button';
 import { RouterLink } from '@angular/router';
-import { LucideAngularModule, LogOut, User, ShoppingCart } from 'lucide-angular';
+
 import { Store } from '@ngrx/store';
-import { cartFeature } from '../../pages/cart/store/cart-feature';
+
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Button } from '../../shared/components/button';
+import { LogOut, LucideAngularModule, ShoppingCart, User } from 'lucide-angular';
 import { authActions } from '../../shared/store/auth-actions';
 
 @Component({
