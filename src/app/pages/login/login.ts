@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { Button } from '../../shared/components/button';
 import { RouterLink } from '@angular/router';
-import { form, Field, required, minLength } from '@angular/forms/signals';
+import { form, required, minLength, Field } from '@angular/forms/signals';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 
@@ -13,7 +13,7 @@ import { FormErrors } from '../../shared/components/form-errors';
 
 @Component({
   selector: 'app-login',
-  imports: [Button, RouterLink, Field, FormsModule, FormErrors],
+  imports: [Button, RouterLink, FormsModule, FormErrors, Field],
   template: ` <div class="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl">
     <h1 class="text-2xl font-bold text-center text-slate-900 mb-8">Sign In</h1>
 
