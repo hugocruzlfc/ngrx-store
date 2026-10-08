@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NgToastComponent } from 'ng-angular-popup';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NgToastComponent],
   selector: 'app-root',
-  styleUrl: './app.css',
   templateUrl: './app.html',
 })
 export class App {
