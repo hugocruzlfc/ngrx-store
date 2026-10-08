@@ -28,6 +28,7 @@ export const authFeatures = createFeature({
       ...state,
       token,
       userId,
+      error: null,
       isLoading: false,
     })),
 
@@ -35,6 +36,7 @@ export const authFeatures = createFeature({
       ...state,
       token: null,
       error,
+      isLoading: false,
     })),
 
     on(authActions.login, (state) => ({
@@ -51,6 +53,7 @@ export const authFeatures = createFeature({
 
     on(authActions.registerSuccess, (state) => ({
       ...state,
+      error: null,
       isLoading: false,
     })),
 
@@ -64,6 +67,7 @@ export const authFeatures = createFeature({
       ...state,
       token: null,
       userId: null,
+      error: null,
       isLoading: false,
     })),
   ),

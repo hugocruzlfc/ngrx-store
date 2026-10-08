@@ -16,7 +16,7 @@ import { authFeatures } from '../../shared/store/auth-feature';
   template: ` <div class="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl">
     <h1 class="text-2xl font-bold text-center text-slate-900 mb-8">Sign In</h1>
 
-    <form (ngSubmit)="onSubmit($event)" class="space-y-6">
+    <form (submit)="onSubmit($event)" class="space-y-6">
       <div>
         <label for="username" class="block text-sm font-medium text-slate-700 mb-2">
           Username
@@ -69,8 +69,8 @@ import { authFeatures } from '../../shared/store/auth-feature';
 })
 export class LoginPage {
   loginModel = signal({
-    username: 'johnd',
-    password: 'm38rmF$',
+    username: '',
+    password: '',
   });
 
   loginForm = form(this.loginModel, (rootPath) => {
