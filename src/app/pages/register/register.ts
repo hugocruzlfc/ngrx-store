@@ -6,9 +6,10 @@ import { FormErrors } from '../../shared/components/form-errors';
 
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
+
+import { registerSchema } from './schema';
 import { authFeatures } from '../../shared/store/auth-feature';
 import { authActions } from '../../shared/store/auth-actions';
-import { registerSchema } from './schema';
 @Component({
   selector: 'app-register',
   imports: [Button, RouterLink, Field, FormErrors],

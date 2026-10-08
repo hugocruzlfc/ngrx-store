@@ -6,10 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 
 import { Store } from '@ngrx/store';
-import { authActions } from '../../shared/store/auth-actions';
-import { authFeatures } from '../../shared/store/auth-feature';
+
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormErrors } from '../../shared/components/form-errors';
+import { authActions } from '../../shared/store/auth-actions';
+import { authFeatures } from '../../shared/store/auth-feature';
 
 @Component({
   selector: 'app-login',
