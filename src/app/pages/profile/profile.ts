@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { LucideAngularModule, Mail, Phone, User, MapPin } from 'lucide-angular';
+import { LucideMail, LucideMapPin, LucidePhone, LucideUser } from '@lucide/angular';
 import { profileFeature } from './store/profile-feature';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -10,7 +10,7 @@ import { AppStorage } from '../../shared/services/storage';
 
 @Component({
   selector: 'app-profile',
-  imports: [LucideAngularModule],
+  imports: [LucideMail, LucidePhone, LucideUser, LucideMapPin],
   template: `<div class="py-8 max-w-4xl mx-auto">
     <h1 class="text-3xl font-bold text-slate-900 mb-8">My Profile</h1>
     @if (loading()) {
@@ -45,7 +45,7 @@ import { AppStorage } from '../../shared/services/storage';
             <div class="space-y-4">
               <div class="flex items-center gap-3">
                 <div class="size-10 rounded-lg bg-indigo-100 flex items-center justify-center">
-                  <lucide-icon [img]="icons.Mail" class="size-5 text-indigo-600" />
+                  <svg lucideMail class="size-5 text-indigo-600" />
                 </div>
                 <div>
                   <p class="text-sm text-slate-500">Email</p>
@@ -55,7 +55,7 @@ import { AppStorage } from '../../shared/services/storage';
 
               <div class="flex items-center gap-3">
                 <div class="size-10 rounded-lg bg-green-100 flex items-center justify-center">
-                  <lucide-icon [img]="icons.Phone" class="size-5 text-green-600" />
+                  <svg lucidePhone class="size-5 text-green-600" />
                 </div>
                 <div>
                   <p class="text-sm text-slate-500">Phone</p>
@@ -65,7 +65,7 @@ import { AppStorage } from '../../shared/services/storage';
 
               <div class="flex items-center gap-3">
                 <div class="size-10 rounded-lg bg-amber-100 flex items-center justify-center">
-                  <lucide-icon [img]="icons.User" class="size-5 text-amber-600" />
+                  <svg lucideUser class="size-5 text-amber-600" />
                 </div>
                 <div>
                   <p class="text-sm text-slate-500">Username</p>
@@ -80,7 +80,7 @@ import { AppStorage } from '../../shared/services/storage';
             <h3 class="text-lg font-semibold text-slate-900 mb-4">Address</h3>
             <div class="flex items-start gap-3">
               <div class="size-10 rounded-lg bg-rose-100 flex items-center justify-center shrink-0">
-                <lucide-icon [img]="icons.MapPin" class="size-5 text-rose-600" />
+                <svg lucideMapPin class="size-5 text-rose-600" />
               </div>
               <div>
                 <p class="font-medium text-slate-900 capitalize">
@@ -99,7 +99,6 @@ import { AppStorage } from '../../shared/services/storage';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Profile implements OnInit {
-  protected readonly icons = { Mail, Phone, User, MapPin };
   private readonly store = inject(Store);
   private readonly storage = inject(AppStorage);
   protected readonly profile = toSignal(this.store.select(profileFeature.selectProfile));

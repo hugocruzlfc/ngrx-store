@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Github, LucideAngularModule, Twitter } from 'lucide-angular';
+import { LucideGlobe, LucideSend } from '@lucide/angular';
 
 @Component({
   selector: 'app-footer',
-  imports: [LucideAngularModule],
+  imports: [LucideGlobe, LucideSend],
   template: `
     <div class="w-full px-4 py-6 bg-slate-800 text-slate-400 mt-auto">
       <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
@@ -19,16 +19,14 @@ import { Github, LucideAngularModule, Twitter } from 'lucide-angular';
 
         <div class="flex items-center gap-4">
           <a href="#" aria-label="GitHub" class="hover:text-white transition-colors">
-            <lucide-icon [img]="icons.Github" class="size-5" />
+            <svg lucideGlobe class="size-5" />
           </a>
           <a href="#" aria-label="Twitter" class="hover:text-white transition-colors">
-            <lucide-icon [img]="icons.Twitter" class="size-5" />
+            <svg lucideSend class="size-5" />
           </a>
         </div>
       </div>
     </div>
   `,
 })
-export class Footer {
-  protected readonly icons = { Github, Twitter };
-}
+export class Footer {}

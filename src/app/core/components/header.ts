@@ -4,13 +4,19 @@ import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { toSignal } from '@angular/core/rxjs-interop';
+import { LucideLogOut, LucideShoppingCart, LucideUser } from '@lucide/angular';
 import { Button } from '../../shared/components/button';
-import { LogOut, LucideAngularModule, ShoppingCart, User } from 'lucide-angular';
 import { authActions } from '../../shared/store/auth-actions';
+
+type CartStateLike = {
+  cart?: {
+    items?: unknown[];
+  };
+};
 
 @Component({
   selector: 'app-header',
-  imports: [Button, RouterLink, LucideAngularModule],
+  imports: [Button, RouterLink, LucideLogOut, LucideShoppingCart, LucideUser],
   template: `
     <div class="sticky top-0 z-50 w-full px-4 py-3 bg-slate-900 text-white shadow-lg">
       <nav class="container mx-auto flex items-center justify-between">
@@ -24,7 +30,7 @@ import { authActions } from '../../shared/store/auth-actions';
             (click)="logout()"
             class="text-white hover:text-gray-300 hover:bg-white/10"
           >
-            <lucide-icon [img]="icons.LogOut" class="size-4 mr-2" />
+            <svg lucideLogOut class="size-4 mr-2" />
             Logout
           </button>
           <button
@@ -34,7 +40,7 @@ import { authActions } from '../../shared/store/auth-actions';
             type="button"
             class="text-white hover:bg-white/10"
           >
-            <lucide-icon [img]="icons.User" class="size-4 mr-2" />
+            <svg lucideUser class="size-4 mr-2" />
             Profile
           </button>
           <button
@@ -44,7 +50,7 @@ import { authActions } from '../../shared/store/auth-actions';
             class="relative text-white hover:bg-white/10"
             routerLink="/cart"
           >
-            <lucide-icon [img]="icons.ShoppingCart" class="size-4" />
+            <svg lucideShoppingCart class="size-4" />
             <span
               class="absolute -top-1 -right-1 size-5 flex items-center justify-center bg-amber-500 text-xs font-medium rounded-full"
             >
@@ -57,11 +63,16 @@ import { authActions } from '../../shared/store/auth-actions';
   `,
 })
 export class Header {
-  protected readonly icons = { LogOut, User, ShoppingCart };
   private readonly store = inject(Store);
-  protected readonly cartItemCount = toSignal(this.store.select(cartFeature.selectCartCount), {
-    initialValue: 0,
-  });
+  protected readonly cartItemCount = toSignal(
+    this.store.select((state: unknown) => {
+      const rootState = state as CartStateLike | null;
+      return rootState?.cart?.items?.length ?? 0;
+    }),
+    {
+      initialValue: 0,
+    },
+  );
 
   protected logout() {
     this.store.dispatch(authActions.logout());
