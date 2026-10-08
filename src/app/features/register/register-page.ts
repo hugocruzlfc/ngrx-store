@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { Button } from '../../shared/components/button';
 import { RouterLink } from '@angular/router';
-import { form, Field, required, minLength, validate } from '@angular/forms/signals';
+import { form, FormField, required, minLength, validate } from '@angular/forms/signals';
 import { FormErrors } from '../../shared/components/form-errors';
 
 import { Store } from '@ngrx/store';
@@ -11,8 +11,8 @@ import { registerSchema } from './schema';
 import { authFeatures } from '../../shared/store/auth-feature';
 import { authActions } from '../../shared/store/auth-actions';
 @Component({
-  selector: 'app-register',
-  imports: [Button, RouterLink, Field, FormErrors],
+  selector: 'app-register-page',
+  imports: [Button, RouterLink, FormErrors, FormField],
   template: ` <div class="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl">
     <h1 class="text-2xl font-bold text-center text-slate-900 mb-8">Register</h1>
 
@@ -24,7 +24,7 @@ import { authActions } from '../../shared/store/auth-actions';
         <input
           id="username"
           type="text"
-          [field]="registerForm.username"
+          [formField]="registerForm.username"
           autocomplete="username"
           class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-shadow"
           placeholder="Enter your username"
@@ -37,7 +37,7 @@ import { authActions } from '../../shared/store/auth-actions';
         <input
           id="email"
           type="email"
-          [field]="registerForm.email"
+          [formField]="registerForm.email"
           autocomplete="username"
           class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-shadow"
           placeholder="Enter your username"
@@ -52,7 +52,7 @@ import { authActions } from '../../shared/store/auth-actions';
         <input
           id="password"
           type="password"
-          [field]="registerForm.password"
+          [formField]="registerForm.password"
           autocomplete="current-password"
           class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-shadow"
           placeholder="Enter your password"
@@ -67,7 +67,7 @@ import { authActions } from '../../shared/store/auth-actions';
         <input
           id="confirmPassword"
           type="password"
-          [field]="registerForm.confirmPassword"
+          [formField]="registerForm.confirmPassword"
           autocomplete="current-password"
           class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-shadow"
           placeholder="Enter your password"
@@ -95,7 +95,7 @@ import { authActions } from '../../shared/store/auth-actions';
     class: 'min-h-screen flex items-center justify-center bg-slate-100 p-4',
   },
 })
-export class Register {
+export class RegisterPage {
   registerModel = signal({
     username: '',
     email: '',

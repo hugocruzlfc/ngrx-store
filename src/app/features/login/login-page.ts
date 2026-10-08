@@ -1,9 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { Button } from '../../shared/components/button';
 import { RouterLink } from '@angular/router';
-import { form, required, minLength, Field } from '@angular/forms/signals';
-import { FormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
+import { form, required, minLength, FormField } from '@angular/forms/signals';
 
 import { Store } from '@ngrx/store';
 
@@ -13,8 +11,8 @@ import { authActions } from '../../shared/store/auth-actions';
 import { authFeatures } from '../../shared/store/auth-feature';
 
 @Component({
-  selector: 'app-login',
-  imports: [Button, RouterLink, FormsModule, FormErrors, Field],
+  selector: 'app-login-page',
+  imports: [Button, RouterLink, FormErrors, FormField],
   template: ` <div class="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl">
     <h1 class="text-2xl font-bold text-center text-slate-900 mb-8">Sign In</h1>
 
@@ -26,7 +24,7 @@ import { authFeatures } from '../../shared/store/auth-feature';
         <input
           id="username"
           type="text"
-          [field]="loginForm.username"
+          [formField]="loginForm.username"
           autocomplete="username"
           class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-shadow"
           placeholder="Enter your username"
@@ -41,7 +39,7 @@ import { authFeatures } from '../../shared/store/auth-feature';
         <input
           id="password"
           type="password"
-          [field]="loginForm.password"
+          [formField]="loginForm.password"
           autocomplete="current-password"
           class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-shadow"
           placeholder="Enter your password"
@@ -69,7 +67,7 @@ import { authFeatures } from '../../shared/store/auth-feature';
     class: 'min-h-screen flex items-center justify-center bg-slate-100 p-4',
   },
 })
-export class Login {
+export class LoginPage {
   loginModel = signal({
     username: 'johnd',
     password: 'm38rmF$',

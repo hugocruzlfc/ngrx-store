@@ -2,15 +2,15 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { productsFeature } from './store/products-feature';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { JsonPipe } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 import { productsActions } from './store/products-actions';
 import { Product } from './products-type';
 import { ProductCard } from '../../core/components/product-card';
+import { cartActions } from '../cart/store/cart-actions';
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-products-page',
   imports: [ProductCard, FormsModule],
   template: `
     <div class="py-8">
@@ -46,7 +46,7 @@ import { ProductCard } from '../../core/components/product-card';
     </div>
   `,
 })
-export class Products implements OnInit {
+export class ProductsPage implements OnInit {
   private readonly store = inject(Store);
   protected readonly products = toSignal(this.store.select(productsFeature.selectFilteredProducts));
   protected readonly loading = toSignal(this.store.select(productsFeature.selectLoading));

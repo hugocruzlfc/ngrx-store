@@ -9,7 +9,7 @@ import { authFeatures } from '../../shared/store/auth-feature';
 import { AppStorage } from '../../shared/services/storage';
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-profile-page',
   imports: [LucideMail, LucidePhone, LucideUser, LucideMapPin],
   template: `<div class="py-8 max-w-4xl mx-auto">
     <h1 class="text-3xl font-bold text-slate-900 mb-8">My Profile</h1>
@@ -98,7 +98,7 @@ import { AppStorage } from '../../shared/services/storage';
   </div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Profile implements OnInit {
+export class ProfilePage implements OnInit {
   private readonly store = inject(Store);
   private readonly storage = inject(AppStorage);
   protected readonly profile = toSignal(this.store.select(profileFeature.selectProfile));
