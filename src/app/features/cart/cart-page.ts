@@ -10,7 +10,15 @@ import { cartActions } from './store/cart-actions';
 
 @Component({
   selector: 'app-cart-page',
-  imports: [RouterLink, Button, CurrencyPipe],
+  imports: [
+    RouterLink,
+    Button,
+    CurrencyPipe,
+    LucideShoppingBag,
+    LucidePlus,
+    LucideMinus,
+    LucideTrash2,
+  ],
   template: `
     <div class="py-8 max-w-4xl mx-auto">
       <h1 class="text-3xl font-bold text-slate-900 mb-8">Shopping Cart</h1>
